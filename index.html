@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Australia's Suicide Rate | FIT3179Asg2</title>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
+
+</head>
+<body>
+
+ <div class="page">
+
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h1>Australia's Suicide Rate</h1>
+        <hr>
+        <p>Deaths by suicide are statistically and relatively rare events. However, every life lost to suicide is a tragedy and the impacts on family, friends and communities are profound. It can have devastating and long-lasting effects on those left behind. Although suicide and intentional self-harm are complex issues, they can be prevented. (Australian Institute of Health and Welfare, 2021)</p>
+        <p class="small-font">If at any point you feel worried about harming yourself while viewing the information on this page—or if you think someone else may be in danger—please stop reading and seek <a href="https://www.aihw.gov.au/suicide-self-harm-monitoring/research-information/crisis-support" target="_blank">help</a>.</p>
+        <hr>
+        <p>This page demonstrates an overview of the suicide rate in Australia by looking at how many there were, how old they were when they died, and the methods used over time.</p>
+        <p>You can interact with the visualisations by using the filter(s) at the bottom of the chart and map, and hovering over each data point or area to see further details.</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+      <h2>Suicide Rates across States and Territories</h2>
+      <p>Following the population growth, the suicide rates increased generally across Australia from 1995 to 2015.</p>
+      <p>Along those years, the suicide rates were always the highest in the Northern Territory. It reached a peak at 28.6 deaths per 100,000 population in 2007. </p>
+      <p>On the other hand, the suicide rates tended to be lower in Victoria, New South Wales, and Australian Capital Territory. The lowest rate is 5.6 deaths per 100,000 population in 2005 in Australian Capital Territory.</p>
+      <div id="vis1" class="vis-container"></div>
+      </div>
+      </div>
+
+    <hr>
+
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+      <h2>Suicide Rates by Gender</h2>
+      <p>From 1921 to 2015, the suicide rates ranged from 8.4 deaths per 100,000 population per year in 1943 to 18.4 in 1963. Along those years, males always have higher suicide rates than females, with several peaks around 1930 and 1960s. The highest rate for males is 29.8 deaths per 100,000 population in 1930. The highest rate for females is 13.1 deaths per 100,000 population in 1965. 
+      </p>
+      <div class="small-font">Use the second line chart to filter out the data based on years</div>
+      <br>
+      <div id="vis2" class="vis-container"></div>
+      <p>The first peak happened in 1930 during the Great Depression years of high poverty and unemployment. The second peak happened during 1960s due to the unrestricted availability of drugs.</p>
+    </div>
+  </div>
+    
+    <hr>
+
+
+    <div class="pure-g">
+      <div class="pure-u-1-1"><h2>Suicide Rates by Age</h2></div>
+      <div class="pure-u-1-3">
+        
+        <div class="description description-left">
+          <br><br><br><br><br>
+          <p>For the first half of the period 1995 to 2015, suicide rates were recorded highest in younger people aged 20-39, peaking at 26.3 deaths per 100,000 population in 1997 for 20-24 age group.</p>
+          <p>For the second half, the trend changed with suicide rates highest in middle-aged people (aged 40-50).</p>
+        </div>
+      </div>
+      <div class="pure-u-2-3">
+        <div id="vis3"  class="vis-container"></div>
+      </div>
+    
+    </div>
+
+    
+    <hr>
+
+    <div class="pure-g">
+      <div class="pure-u-1-1"><h2>Suicide Methods</h2></div>
+      <div class="pure-u-2-3">
+        <div id="vis4"  class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-3">
+        <div class="description description-right">
+          <p>Hanging has always been the most used suicide method in Australia with gases and firearms come closely at second and third.</p>
+          <p>Over the years, the percentage of hanging increased while the other methods decreased. In 2015, hanging was used for more than half of all suicide deaths in that year (54.96%).</p>
+        </div>
+      </div>
+    
+  </div> 
+
+    <hr>
+  <br>
+    <div class="pure-g">
+      <div class="pure-u-1-1 small-font">
+        <p>This visualisation is created by <a href="https://github.com/ricatiopan" target="_blank">Frederica Theophilia</a>. The datasource is from <a href="https://www.aihw.gov.au/suicide-self-harm-monitoring/data/data-downloads" target="_blank">Australian Institute of Health and Welfare</href>.</p>
+      </div>
+    </div>
+  
+
+  </div> 
+   
+<script type="text/javascript">
+  var specVis1 = "./js/newmap.vg.json";
+  var specVis2= "./js/line.vg.json";
+  var specVis3 = "./js/heatmap.vg.json";
+  var specVis4= "./js/pie.vg.json";
+
+  vegaEmbed('#vis1', specVis1, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  
+   vegaEmbed('#vis2', specVis2, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  vegaEmbed('#vis3', specVis3, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  vegaEmbed('#vis4', specVis4, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+</script>
+</body>
+</html>
