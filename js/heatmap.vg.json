@@ -1,0 +1,17 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container",
+    "data": {"url": "https://raw.githubusercontent.com/ricatiopan/fit3179asg2new/main/data/agegroup.csv"},
+    "title":"Suicide Rate Age Distribution (per 100,000 population)",
+    "mark": "rect",
+    "encoding": {
+      "y": {"field": "age_group", "type": "nominal", "title":"Age Group"},
+      "x": {"field": "Year", "type": "ordinal"},
+      "color": {"field": "Rate", "type": "quantitative"},
+      "tooltip": [
+        {"field": "Year", "type": "ordinal", "title": "Year"},
+        {"field": "age_group", "type": "nominal", "title": "Age Group"},
+        {"field": "Rate", "type": "quantitative", "format": ".2f"}
+      ]
+    }
+  }

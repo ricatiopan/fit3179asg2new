@@ -1,0 +1,184 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {"url": "https://raw.githubusercontent.com/ricatiopan/fit3179asg2new/main/data/gender.csv"},
+  
+    "vconcat": [{
+
+
+
+      "width": 800,
+      "transform": [{
+        "filter": "datum.Gender === 'Female' || datum.Gender === 'Male'"
+      }],
+      "title": "Females and Males Suicide Rates (1921-2015)",
+      "height": 200,
+
+      "layer": [
+        {
+      "mark": "line",
+      "encoding": {
+          "x": {
+              "field": "Year",
+              "type": "temporal",
+              "scale": { "domain": { "param": "brush" } },
+              "axis": { "title": "", "tickCount": 10 }
+          },
+          "y": { "field": "Rate", "type": "quantitative" ,"title":"Rate (per 100,000 population)"},
+          "color": {"field": "Gender", "type": "nominal"},
+          "tooltip": [
+            {"timeUnit": {"unit": "year"},"field": "Year", "type": "temporal", "title": "Year"},
+            {"field": "Gender", "type": "nominal", "title": "Gender"},
+            {"field": "Rate", "type": "quantitative", "title": "Suicide Rate (per 100,000)"}
+          ]
+      }
+    },
+    {
+        "mark": {"type": "point", "opacity": 1, "filled": true},
+        "encoding": {
+            "x": {
+                "field": "Year",
+                "type": "temporal",
+                "scale": { "domain": { "param": "brush" } },
+                "axis": { "title": "", "tickCount": 10 }
+            },
+            "y": { "field": "Rate", "type": "quantitative" },
+            "color": {"field": "Gender", "type": "nominal"},
+            "tooltip": [
+              {"timeUnit": {"unit": "year"},"field": "Year", "type": "temporal", "title": "Year"},
+              {"field": "Gender", "type": "nominal", "title": "Gender"},
+              {"field": "Rate", "type": "quantitative", "title": "Suicide Rate (per 100,000)"}
+            ]
+        }
+      }
+      
+      
+
+
+
+
+    ]
+
+
+
+  }, {
+
+
+
+
+
+
+      "width": 800,
+      "transform": [{
+        "filter": "datum.Gender === 'Total'"
+      }],
+      "title": "Total Suicide Rate (1921-2015)",
+      "height": 80,
+
+
+
+
+
+
+      "layer": [
+        {
+            "mark": "line",
+            "params": [{
+                "name": "brush",
+                "select": { "type": "interval", "encodings": ["x"] }
+            }],
+            "encoding": {
+                "x": {
+                    "field": "Year",
+                    "type": "temporal",
+                    "axis": { "tickCount": 10 }
+                },
+                "y": {
+                    "field": "Rate",
+                    "type": "quantitative",
+                    "axis": { "tickCount": 3},"title":"Rate (per 100,000 population)"
+                },
+                "tooltip": [
+                  {"timeUnit": {"unit": "year"},"field": "Year", "type": "temporal", "title": "Year"},
+                  {"field": "Rate", "type": "quantitative", "title": "Suicide Rate (per 100,000)"}
+                ],
+                "color":{"value":"#FF0000"}
+            }
+    },
+    {
+        "mark": {"type": "point", "opacity": 1, "filled": true},
+      "params": [{
+          "name": "brush1",
+          "select": { "type": "interval", "encodings": ["x"] }
+      }],
+      "encoding": {
+          "x": {
+              "field": "Year",
+              "type": "temporal",
+              "axis": { "tickCount": 10 }
+          },
+          "y": {
+              "field": "Rate",
+              "type": "quantitative",
+              "axis": { "tickCount": 3}
+          },
+          "tooltip": [
+            {"timeUnit": {"unit": "year"},"field": "Year", "type": "temporal", "title": "Year"},
+            {"field": "Rate", "type": "quantitative", "title": "Suicide Rate (per 100,000)"}
+          ],
+          "color":{"value":"#FF0000"}
+      }
+      }, {
+
+        "data":{"values":[{"Year":"1930","Rate":0},{"Year":"1930","Rate":20}]},
+
+        "mark": "rule",
+        "encoding": {
+            "x": {"field": "Year","type": "temporal"},
+            "y": {"field": "Rate", "type": "quantitative"},
+          "color": {"value": "black"},
+          "size": {"value": 2}
+        }
+      },
+      {
+      "mark": {
+      "type": "text",
+      "align": "right",
+      "baseline": "middle",
+      "dx": -240,
+      "dy":-33,
+      "fontSize": 10
+      },
+      "encoding":{"text": {"value":"Great Depression"},
+      "color": {"value": "black"}}
+    }, {
+
+        "data":{"values":[{"Year":"1963","Rate":0},{"Year":"1963","Rate":20}]},
+
+        "mark": "rule",
+        "encoding": {
+            "x": {"field": "Year","type": "temporal"},
+            "y": {"field": "Rate", "type": "quantitative"},
+          "color": {"value": "black"},
+          "size": {"value": 2}
+        }
+      },
+      {
+      "mark": {
+      "type": "text",
+      "align": "right",
+      "baseline": "middle",
+      "dx": -50,
+      "dy":-33,
+      "fontSize": 10
+      },
+      "encoding":{"text": {"value":"Unrestricted Drugs"},
+      "color": {"value": "black"}}
+    }
+
+    ]
+
+
+  }]
+}
+
+ 

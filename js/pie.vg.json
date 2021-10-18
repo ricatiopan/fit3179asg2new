@@ -1,0 +1,41 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container",
+    "title": "Suicide Methods (1995-2015)",
+    "data": {"url": "https://raw.githubusercontent.com/ricatiopan/fit3179asg2new/main/data/cause.csv"},
+
+    "params": [
+    {
+    "name": "Year_selection",
+    "value": 1995,
+    "bind": {
+    "input": "range",
+    "min": 1995,
+    "max": 2015,
+    "step": 1,
+    "name": "Year: "
+    }
+    }],
+    "transform":[
+    {"filter": "datum.Year == Year_selection"}
+    ],
+
+    "encoding": {
+        "theta": {"field": "Percentage", "type": "quantitative"},
+        "color": {"field": "Types", "type": "nominal", "title":"Method",
+        "scale": {
+           
+            "scheme": "category20b"
+        }}
+    },
+  "layer": [{
+    "mark": {"type": "arc", "innerRadius": 50},
+    "encoding": {
+        "tooltip": [
+            {"field": "Year", "type": "ordinal", "title": "Year"},
+            {"field": "Types", "type": "nominal", "title": "Method"},
+            {"field": "Percentage", "type": "quantitative", "format": ".2%"}
+          ]
+    }
+  }]
+}
